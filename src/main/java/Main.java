@@ -49,6 +49,7 @@ class RacingCar {
     int speed;
 
     public RacingCar(String name, int speed) {
-         this.name = name;
-         this.speed = speed;
-         }
+        this.name = name;
+        this.speed = speed;
+    }
+}
