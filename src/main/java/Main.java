@@ -1,27 +1,32 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-         Race race = new Race();
+        Race race = new Race();
         Scanner scanner = new Scanner(System.in);
 
-        for(int i = 0; i < 3; i++){
-            System.out.println("ВВедите название " + (i+1) + " автомобиля: ");
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Введите название " + (i + 1) + " автомобиля: ");
 
-           String nameCar = scanner.next();
+            String nameCar = scanner.next();
 
             int speedCar;
             while (true) {
                 System.out.println("Введите скорость " + (i + 1) + "-го автомобиля (от 0 до 250 км/час): ");
-                speedCar = scanner.nextInt();
-                if(speedCar >=0 && speedCar <=250){
-                    break;
+                if (scanner.hasNextInt()) {
+                    speedCar = scanner.nextInt();
+                    if (speedCar >= 0 && speedCar <= 250) {
+                        break;
+                    } else {
+                        System.out.println("Недопустимая скорость автомобиля. Попробуйте еще раз.");
+                    }
                 } else {
-                    System.out.println("Недопустимая скорость автомобиля. Попробуйте еще раз");
+                    System.out.println("Упс! Ошибка! Введите скорость цифрами.");
+                    scanner.next();
                 }
             }
+
             RacingCar racingCar = new RacingCar(nameCar, speedCar);
             race.newLeader(racingCar);
         }
